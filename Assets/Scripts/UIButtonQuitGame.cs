@@ -16,6 +16,9 @@ public class UIButtonQuitGame : MonoBehaviour {
         audioTime = GetComponent<AudioSource>().clip.length;
     }
 
+    /// <summary>
+    /// Method that quits the game
+    /// </summary>
     public void QuitGame()
     {
         // Play Audio
@@ -23,6 +26,10 @@ public class UIButtonQuitGame : MonoBehaviour {
         StartCoroutine(WaitAndQuit());
     }
     
+    /// <summary>
+    /// Coroutine that quit game after time of audio of button
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitAndQuit()
     {
         // After the button has played audio ...

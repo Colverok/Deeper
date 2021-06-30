@@ -21,17 +21,29 @@ public class UIPause : MonoBehaviour {
     /// Gameobject that represents canvas which is active when the player wins the level
     /// </summary>
     public GameObject goodJobCanvas;
+    /// <summary>
+    /// Gameobject that represents canvas which is active when the player begin the game
+    /// </summary>
     public GameObject beginCanvas;
+    /// <summary>
+    /// Audio that plays when escapekey was pressed
+    /// </summary>
     public AudioSource EscAudio;
+    /// <summary>
+    /// Image of Escapekey Canvas
+    /// </summary>
     public Image EscImageToAnimate;
     /// <summary>
-    /// Bool value describes if the player won the layer
+    /// Bool value describes if the player won the level
     /// </summary>
     public bool isEnd = false;
+    /// <summary>
+    /// Bool value describes if the player started the game
+    /// </summary>
     public bool isBegin = false;
 
     /// <summary>
-    /// Bool value decribes if pause is active
+    /// Map represents name of states as keys and corresponding bool values (if pause is active) as values
     /// </summary>
     private SortedDictionary<string, bool> isPause = new SortedDictionary<string, bool>();
     /// <summary>
@@ -52,6 +64,7 @@ public class UIPause : MonoBehaviour {
     /// <param name="canvas"> Canvas to set active</param>
     private void PauseAndActive(GameObject canvas, string state)
     {
+        // Changing the condition of state
         isPause[state] = !isPause[state];
         if (isPause[state])
         {
@@ -63,8 +76,7 @@ public class UIPause : MonoBehaviour {
             }
         }
         else
-        {
-            
+        {            
             if (state == "Escape")
             {
                 EscImageToAnimate.GetComponent<Animator>().SetTrigger("EscapeEnd");
@@ -76,7 +88,7 @@ public class UIPause : MonoBehaviour {
                 timer = 1f;
             }
         }
-       
+       // !need to rewrite good
     }
 
     private bool IfAnotherPaused(string thisState)
@@ -118,6 +130,10 @@ public class UIPause : MonoBehaviour {
 
     }
 
+    /// <summary>
+    /// Coroutine that wait for animation of escape image, hides escape canvas and set timer to 1f
+    /// </summary>
+    /// <returns></returns>
     IEnumerator SetNotActiveCanvas()
     {
         yield return new WaitForSecondsRealtime(1f);

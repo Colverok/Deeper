@@ -30,7 +30,7 @@ public class UITimerScript : MonoBehaviour
         // When the time = 0, player lose
         if (delta.TotalSeconds <= 0)
         {
-                SceneManager.LoadScene(BadEndScene);
+            SceneManager.LoadScene(BadEndScene);
         }
         
     }

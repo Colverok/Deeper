@@ -26,7 +26,7 @@ public class EmitterScript : MonoBehaviour
     {
         if (Time.time > nextLaunchTime)
         {
-            float xHalfSize = GetComponent<SpriteRenderer>().bounds.size.x / 2;
+            float xHalfSize = GetComponent<SpriteRenderer>().bounds.size.x / 2; // half or real size of sprite
             Vector3 position = transform.localPosition + new Vector3(Random.Range(-xHalfSize, xHalfSize), 0, 0);
             Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, Random.Range(-20, 20)));
             Instantiate(enemy, position, rotation);
